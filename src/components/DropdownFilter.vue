@@ -1,7 +1,10 @@
 <template>
   <div class="dropdown">
     <div @click="handleClick" class="dropdown__btn">
-      <span class="dropdown__btn--placeholder">{{ placeholder }}</span>
+      <span v-if="!value" class="dropdown__btn--placeholder">{{
+        placeholder
+      }}</span>
+      <span v-else> {{ value }}</span>
       <span class="btn-arrow" />
     </div>
     <div v-if="visible" class="dropdown__content">
@@ -11,6 +14,7 @@
       <span
         @click="emitChange(option)"
         class="options"
+        :class="{ 'options--selected': option == value }"
         v-for="option in options"
         :key="option"
       >
@@ -30,6 +34,10 @@ export default {
     placeholder: {
       type: String,
       default: "Filter",
+    },
+    value: {
+      type: String,
+      default: "",
     },
   },
   data() {
@@ -92,14 +100,14 @@ export default {
       font-weight: 400;
       font-size: 16px;
       line-height: 19px;
-      color: rgba(0, 0, 0, 0.6);
+      color: $text-placeholder;
     }
     .btn-arrow::before {
       position: absolute;
       top: calc(50% - 20px / 2);
       right: 16px;
       font-size: 30px;
-      color: rgba(0, 0, 0, 0.6);
+      color: $text-placeholder;
       content: "\01F893";
     }
   }
@@ -116,9 +124,11 @@ export default {
     border: 1px solid rgba(0, 0, 0, 0.38);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
       0px 2px 4px rgba(0, 0, 0, 0.14);
+    z-index: 999;
     .options {
       font-size: 16px;
       padding: 10px;
+      &--selected,
       &:hover {
         background: rgba(0, 0, 0, 0.2);
       }

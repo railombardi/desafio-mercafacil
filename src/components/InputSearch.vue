@@ -10,10 +10,8 @@
 </template>
 
 <script>
-import SearchIcon from "./icons/SearchIcon.vue";
 export default {
   name: "InputSearch",
-  components: { SearchIcon },
   props: {
     placeholder: {
       type: String,
@@ -55,14 +53,15 @@ export default {
     left: 16px;
   }
   &__input {
+    width: 100%;
     height: 56px;
     padding: 16px 16px 16px 48px;
     font-size: 16px;
     line-height: 24px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid $text-placeholder;
     border-radius: 8px;
     &::placeholder {
-      color: rgba(0, 0, 0, 0.5);
+      color: $text-placeholder;
     }
     &:focus {
       outline: none;
