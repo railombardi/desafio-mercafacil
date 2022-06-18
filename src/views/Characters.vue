@@ -144,7 +144,6 @@ export default {
     },
     handleOrderChange(newValue) {
       this.order = newValue;
-      console.log(this.order);
     },
     incrementPage() {
       this.page++;
