@@ -3,20 +3,7 @@
     <nav class="navbar">
       <div class="navbar__container">
         <NavbarIcon />
-        <div v-if="$mq !== 'sm'" class="navigators">
-          <router-link class="navigators__link" to="/">Characters</router-link>
-          <router-link class="navigators__link" to="/">Locations</router-link>
-          <router-link class="navigators__link" to="/">Episodes</router-link>
-        </div>
-        <MenuIcon v-if="!overlayVisible" @click.native="openOverlay" />
-        <CloseIcon v-else @click.native="closeOverlay" />
-        <v-overlay
-          :value="overlayVisible"
-          absolute
-          color="#fff"
-          :opacity="1"
-          v-if="$mq === 'sm'"
-        >
+        <mq-layout mq="lg">
           <div class="navigators">
             <router-link class="navigators__link" to="/"
               >Characters</router-link
@@ -24,7 +11,30 @@
             <router-link class="navigators__link" to="/">Locations</router-link>
             <router-link class="navigators__link" to="/">Episodes</router-link>
           </div>
-        </v-overlay>
+        </mq-layout>
+        <mq-layout :mq="['sm', 'md']">
+          <MenuIcon v-if="!overlayVisible" @click.native="openOverlay" />
+          <CloseIcon v-else-if="overlayVisible" @click.native="closeOverlay" />
+          <v-overlay
+            v-if="overlayVisible"
+            :value="overlayVisible"
+            absolute
+            color="#fff"
+            :opacity="1"
+          >
+            <div class="navigators">
+              <router-link class="navigators__link" to="/"
+                >Characters</router-link
+              >
+              <router-link class="navigators__link" to="/"
+                >Locations</router-link
+              >
+              <router-link class="navigators__link" to="/"
+                >Episodes</router-link
+              >
+            </div>
+          </v-overlay>
+        </mq-layout>
       </div>
     </nav>
     <router-view />
@@ -80,7 +90,12 @@ export default {
           line-height: 28px;
         }
         @include tablet() {
+          flex-direction: row;
           column-gap: 24px;
+          &__link {
+            font-size: 18px;
+            line-height: 21px;
+          }
         }
       }
     }

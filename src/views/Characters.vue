@@ -1,79 +1,76 @@
 <template>
-  <div @scroll="getNextCharacters" class="characters">
-    <PageLoader
-      v-if="this.$apollo.queries.characters.loading"
-      class="characters__loader"
-    />
-    <div class="container">
+  <PagesLayout @scroll.native="getNextCharacters">
+    <template>
+      <PageLoader
+        v-if="this.$apollo.queries.characters.loading"
+        class="characters__loader"
+      />
       <img
         class="characters__img"
         :width="charactersImg.width"
         :height="charactersImg.height"
         :src="require('../assets/images/Characters.png')"
       />
-      <div class="characters__filters">
-        <InputSearch v-model="search" placeholder="Filter by name..." />
-        <DropdownFilter
-          v-if="$mq === 'lg'"
-          @change="handleGenderChange($event)"
-          :value="genderFilter"
-          :options="genderOptions"
-          placeholder="Gender"
-        />
-        <DropdownFilter
-          v-if="$mq === 'lg'"
-          @change="handleStatusChange($event)"
-          :value="statusFilter"
-          :options="statusOptions"
-          placeholder="Status"
-        />
-        <v-dialog class="dialog" width="312" v-model="dialogVisible" v-else>
-          <template v-slot:activator="{ on, attrs }">
-            <div
-              v-on="on"
-              v-bind="attrs"
-              v-if="$mq !== 'lg'"
-              class="characters__filters btn-filters"
-            >
-              <ActionButton icon="filter" label="ADVANCED FILTERS" />
-            </div>
-          </template>
-          <v-card>
-            <div class="dialog__header">
-              <span> Filters </span>
-              <CloseIcon @click.native="closeDialog"></CloseIcon>
-            </div>
-            <DropdownFilter
-              @change="handleGenderChange($event)"
-              :value="genderFilter"
-              :options="genderOptions"
-              placeholder="Gender"
-            />
-            <DropdownFilter
-              @change="handleStatusChange($event)"
-              :value="statusFilter"
-              :options="statusOptions"
-              placeholder="Status"
-            />
-          </v-card>
-        </v-dialog>
-      </div>
-      <div class="characters__list">
-        <CharacterCard
-          v-for="character in charactersList"
-          :key="character.id"
-          :name="character.name"
-          :image="character.image"
-          :species="character.species"
-          @click.native="toCharacterDetails(character.id)"
-        />
-      </div>
-    </div>
-  </div>
+    </template>
+    <template #filters>
+      <InputSearch v-model="search" placeholder="Filter by name..." />
+      <DropdownFilter
+        v-if="$mq === 'lg'"
+        @change="handleGenderChange($event)"
+        :value="genderFilter"
+        :options="genderOptions"
+        placeholder="Gender"
+      />
+      <DropdownFilter
+        v-if="$mq === 'lg'"
+        @change="handleStatusChange($event)"
+        :value="statusFilter"
+        :options="statusOptions"
+        placeholder="Status"
+      />
+      <v-dialog class="dialog" width="312" v-model="dialogVisible" v-else>
+        <template v-slot:activator="{ on, attrs }">
+          <div v-on="on" v-bind="attrs" v-if="$mq !== 'lg'" class="btn-filters">
+            <ActionButton icon="filter" label="ADVANCED FILTERS" />
+          </div>
+        </template>
+        <v-card>
+          <div class="dialog__header">
+            <span> Filters </span>
+            <CloseIcon @click.native="closeDialog"></CloseIcon>
+          </div>
+          <DropdownFilter
+            @change="handleGenderChange($event)"
+            :value="genderFilter"
+            :options="genderOptions"
+            placeholder="Gender"
+          />
+          <DropdownFilter
+            @change="handleStatusChange($event)"
+            :value="statusFilter"
+            :options="statusOptions"
+            placeholder="Status"
+          />
+        </v-card>
+      </v-dialog>
+    </template>
+    <template #list>
+      <CharacterCard
+        v-for="character in charactersList"
+        :key="character.id"
+        :name="character.name"
+        :image="character.image"
+        :species="character.species"
+        @click.native="toCharacterDetails(character.id)"
+      />
+    </template>
+  </PagesLayout>
 </template>
 
 <script>
+import PagesLayout from "@/layouts/PagesLayout.vue";
 export default {
+  components: { PagesLayout },
   name: "CharactersView",
   data() {
     return {
@@ -132,7 +129,7 @@ export default {
   },
   methods: {
     toCharacterDetails(id) {
-      window.open(`character/${id}`, "__blank");
+      window.open(`characters/${id}`, "__blank");
     },
     handleGenderChange(newValue) {
       this.genderFilter = newValue;
@@ -163,68 +160,19 @@ export default {
 </script>
 <style lang="scss" scoped>
 .characters {
-  padding-top: 26px;
-  position: relative;
-  height: 100%;
-  overflow: auto;
-  .container {
-    display: flex;
-    width: 100%;
-    padding: 0 24px;
-    flex-direction: column;
-    height: 100%;
-    align-items: center;
-    margin: 0 auto;
-    @include desktop() {
-      width: 1020px;
-      padding: 0;
-    }
-  }
   &__img {
     padding-bottom: 32px;
     @include desktop() {
       padding-bottom: 16px;
     }
   }
-  &__filters {
-    display: grid;
-    grid-template-columns: 312px;
-    justify-content: center;
-    width: 100%;
-    column-gap: 20px;
-    @include tablet() {
-      grid-template-columns: repeat(3, 240px);
-      justify-content: center;
-    }
-    @include desktop() {
-      justify-content: flex-start;
-    }
-  }
-  .btn-filters {
-    padding-top: 16px;
-  }
-  &__list {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: 309px;
-    justify-items: center;
-    padding: 48px 0 100px;
-    column-gap: 20px;
-    row-gap: 24px;
-    width: 100%;
-    @include mobile() {
-      grid-template-columns: repeat(auto-fit, 312px);
-      justify-content: center;
-    }
-    @include desktop() {
-      grid-template-columns: repeat(auto-fit, 240px);
-      padding: 60px 0 150px;
-    }
-  }
   &__loader {
     position: absolute;
     top: 80%;
   }
+}
+.btn-filters {
+  padding-top: 16px;
 }
 ::v-deep .v-card {
   display: flex;

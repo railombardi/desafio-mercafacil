@@ -10,3 +10,17 @@
   box-sizing: border-box;
   font-family: $font-roboto;
 }
+
+.container {
+  display: flex;
+  width: 100%;
+  padding: 0 24px;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  margin: 0 auto;
+  @include desktop() {
+    width: 1020px;
+    padding: 0;
+  }
+}

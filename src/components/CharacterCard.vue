@@ -43,7 +43,6 @@ export default {
   }
   &:hover {
     width: 260px;
-    transform: translateX(-10px);
   }
   &__img {
     width: 100%;
