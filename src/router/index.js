@@ -13,11 +13,11 @@ const routes = [
     name: "characterDetails",
     component: () => import("../views/CharacterDetails.vue"),
   },
-  // {
-  //   path: "/locations",
-  //   name: "locations",
-  //   component: () => import("../views/Locations.vue"),
-  // },
+  {
+    path: "/locations",
+    name: "locations",
+    component: () => import("../views/Locations.vue"),
+  },
 ];
 
 const router = new VueRouter({

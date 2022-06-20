@@ -36,7 +36,6 @@ export default {};
   .list {
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-rows: 309px;
     justify-items: center;
     padding: 48px 0 100px;
     column-gap: 20px;

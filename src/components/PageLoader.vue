@@ -1,5 +1,7 @@
 <template>
-  <img class="loader" :src="require('../assets/images/loading.png')" />
+  <v-overlay :value="true">
+    <img class="loader" :src="require('../assets/images/loading.png')" />
+  </v-overlay>
 </template>
 
 <script>

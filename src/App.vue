@@ -8,7 +8,9 @@
             <router-link class="navigators__link" to="/"
               >Characters</router-link
             >
-            <router-link class="navigators__link" to="/">Locations</router-link>
+            <router-link class="navigators__link" to="/locations"
+              >Locations</router-link
+            >
             <router-link class="navigators__link" to="/">Episodes</router-link>
           </div>
         </mq-layout>

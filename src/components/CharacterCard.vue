@@ -40,9 +40,9 @@ export default {
   @include desktop() {
     grid-template-rows: 168px 76px;
     width: 240px;
-  }
-  &:hover {
-    width: 260px;
+    &:hover {
+      width: 260px;
+    }
   }
   &__img {
     width: 100%;

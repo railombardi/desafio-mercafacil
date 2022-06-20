@@ -1,9 +1,7 @@
 <template>
-  <div
-    v-if="!this.$apollo.queries.character.loading"
-    class="characters-details"
-  >
-    <div class="container">
+  <div class="characters-details">
+    <PageLoader v-if="this.$apollo.queries.character.loading" />
+    <div v-else class="container">
       <div class="header">
         <p @click="$router.push({ name: 'characters' })" class="back">
           <span class="back__arrow" />

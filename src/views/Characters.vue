@@ -2,7 +2,7 @@
   <PagesLayout @scroll.native="getNextCharacters">
     <template>
       <PageLoader
-        v-if="this.$apollo.queries.characters.loading"
+        v-if="$apollo.queries.characters.loading"
         class="characters__loader"
       />
       <img
@@ -129,7 +129,7 @@ export default {
   },
   methods: {
     toCharacterDetails(id) {
-      window.open(`characters/${id}`, "__blank");
+      this.$router.push({ path: `characters/${id}` });
     },
     handleGenderChange(newValue) {
       this.genderFilter = newValue;
@@ -138,9 +138,6 @@ export default {
     handleStatusChange(newValue) {
       this.statusFilter = newValue;
       this.page = 1;
-    },
-    handleOrderChange(newValue) {
-      this.order = newValue;
     },
     incrementPage() {
       this.page++;
@@ -165,10 +162,6 @@ export default {
     @include desktop() {
       padding-bottom: 16px;
     }
-  }
-  &__loader {
-    position: absolute;
-    top: 80%;
   }
 }
 .btn-filters {
