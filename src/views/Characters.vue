@@ -158,9 +158,13 @@ export default {
 <style lang="scss" scoped>
 .characters {
   &__img {
-    padding-bottom: 32px;
+    width: 312px;
+    height: 104px;
+    margin: 32px 0;
     @include desktop() {
-      padding-bottom: 16px;
+      width: 600px;
+      height: 200px;
+      margin: 26px 0 15px;
     }
   }
 }

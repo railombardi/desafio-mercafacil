@@ -19,13 +19,17 @@
             v-for="key in characterInformationsKeys"
             :key="key"
             class="block"
+            @click="key === 'location' ? goToLocation(character[key].id) : ''"
             :class="{ 'block--clickable': key === 'location' }"
           >
             <span class="block__key">{{ key }}</span>
             <span v-if="key !== 'location'" class="block__info">{{
               character[key] ? character[key] : "-"
             }}</span>
-            <span v-else class="block__info">{{ character[key].name }}</span>
+            <div v-else>
+              <span class="block__info">{{ character[key].name }}</span>
+              <ArrowRight class="block__arrow" />
+            </div>
           </div>
         </div>
         <div class="details__episodes">
@@ -37,10 +41,12 @@
               v-for="episode in character.episode"
               :key="episode.id"
               class="block block--clickable"
+              @click="goToEpisode(episode.id)"
             >
               <span class="block__key">{{ episode.episode }}</span>
               <span class="block__info">{{ episode.name }}</span>
               <span class="block__date"> {{ episode.air_date }}</span>
+              <ArrowRight class="block__arrow" />
             </div>
           </div>
         </div>
@@ -83,6 +89,14 @@ export default {
     next((vm) => {
       vm.from = from.path;
     });
+  },
+  methods: {
+    goToLocation(id) {
+      this.$router.push({ path: `/locations/${id}` });
+    },
+    goToEpisode(id) {
+      this.$router.push({ path: `/episodes/${id}` });
+    },
   },
 };
 </script>
@@ -171,6 +185,7 @@ export default {
         flex-direction: column;
         padding: 9px 16px 12px;
         border-bottom: 1px solid $surface-overlay;
+        position: relative;
         &--clickable {
           cursor: pointer;
         }
@@ -192,6 +207,11 @@ export default {
           font-size: 10px;
           line-height: 16px;
           color: $gray-base;
+        }
+        &__arrow {
+          position: absolute;
+          right: 24px;
+          top: calc(50% - 12px / 2);
         }
       }
     }

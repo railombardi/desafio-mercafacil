@@ -90,7 +90,7 @@ export default {
 }
 .episodes {
   &__img {
-    padding-top: 16px;
+    margin-top: 16px;
   }
   &-layout {
     ::v-deep .list {

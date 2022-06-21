@@ -82,6 +82,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.locations__img {
+  margin-top: 16px;
+}
 .search {
   padding: 16px;
   width: 100%;
