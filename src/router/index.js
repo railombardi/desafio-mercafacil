@@ -18,6 +18,11 @@ const routes = [
     name: "locations",
     component: () => import("../views/Locations.vue"),
   },
+  {
+    path: "/locations/:id",
+    name: "locationDetails",
+    component: () => import("../views/LocationDetails.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -84,6 +84,6 @@ export default {
 <style lang="scss" scoped>
 .search {
   padding: 16px;
-  width: 326px;
+  width: 500px;
 }
 </style>

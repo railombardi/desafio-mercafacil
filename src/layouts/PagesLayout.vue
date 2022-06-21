@@ -16,7 +16,7 @@
 export default {};
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .layout {
   padding-top: 16px;
   position: relative;

@@ -3,7 +3,7 @@
     <PageLoader v-if="this.$apollo.queries.character.loading" />
     <div v-else class="container">
       <div class="header">
-        <p @click="$router.push({ name: 'characters' })" class="back">
+        <p @click="$router.push({ path: from })" class="back">
           <span class="back__arrow" />
           GO BACK
         </p>
@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       character: {},
+      from: null,
     };
   },
   computed: {
@@ -77,6 +78,11 @@ export default {
       });
       return keys;
     },
+  },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.from = from.path;
+    });
   },
 };
 </script>

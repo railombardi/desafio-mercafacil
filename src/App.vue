@@ -25,13 +25,22 @@
             :opacity="1"
           >
             <div class="navigators">
-              <router-link class="navigators__link" to="/"
+              <router-link
+                @click.native="closeOverlay"
+                class="navigators__link"
+                to="/"
                 >Characters</router-link
               >
-              <router-link class="navigators__link" to="/"
+              <router-link
+                @click.native="closeOverlay"
+                class="navigators__link"
+                to="/locations"
                 >Locations</router-link
               >
-              <router-link class="navigators__link" to="/"
+              <router-link
+                @click.native="closeOverlay"
+                class="navigators__link"
+                to="/"
                 >Episodes</router-link
               >
             </div>
@@ -102,7 +111,7 @@ export default {
       }
     }
     ::v-deep .v-overlay {
-      top: 64px;
+      top: 62px;
       &__content {
         width: 100%;
         height: 100%;
