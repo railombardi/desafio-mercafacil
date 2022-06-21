@@ -2,7 +2,7 @@
   <div data-app id="app">
     <nav class="navbar">
       <div class="navbar__container">
-        <NavbarIcon @click.native="goToHome" />
+        <NavbarIcon class="navbar__icon" @click.native="goToHome" />
         <mq-layout mq="lg">
           <div class="navigators">
             <router-link class="navigators__link" to="/"
@@ -68,7 +68,8 @@ export default {
       this.overlayVisible = false;
     },
     goToHome() {
-      this.$router.push({ path: "/" });
+      if (this.$route.name != "characters")
+        this.$router.push({ name: "characters" });
     },
   },
 };
@@ -86,6 +87,9 @@ export default {
     height: 60px;
     box-shadow: -2px 0px 8px 2px rgba(0, 0, 0, 0.1);
     padding: 0 20px;
+    &__icon {
+      cursor: pointer;
+    }
     &__container {
       display: flex;
       align-items: center;
