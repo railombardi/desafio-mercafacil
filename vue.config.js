@@ -1,4 +1,7 @@
 module.exports = {
+  configureWebpack: {
+    entry: ["regenerator-runtime/runtime.js", "./src/main.js"],
+  },
   css: {
     loaderOptions: {
       scss: {
