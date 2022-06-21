@@ -23,6 +23,16 @@ const routes = [
     name: "locationDetails",
     component: () => import("../views/LocationDetails.vue"),
   },
+  {
+    path: "/episodes",
+    name: "episodes",
+    component: () => import("../views/Episodes.vue"),
+  },
+  {
+    path: "/episodes/:id",
+    name: "episodesDetails",
+    component: () => import("../views/EpisodeDetails.vue"),
+  },
 ];
 
 const router = new VueRouter({

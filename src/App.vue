@@ -11,7 +11,9 @@
             <router-link class="navigators__link" to="/locations"
               >Locations</router-link
             >
-            <router-link class="navigators__link" to="/">Episodes</router-link>
+            <router-link class="navigators__link" to="/episodes"
+              >Episodes</router-link
+            >
           </div>
         </mq-layout>
         <mq-layout :mq="['sm', 'md']">
@@ -40,7 +42,7 @@
               <router-link
                 @click.native="closeOverlay"
                 class="navigators__link"
-                to="/"
+                to="/episodes"
                 >Episodes</router-link
               >
             </div>
@@ -71,7 +73,7 @@ export default {
 <style lang="scss" scoped>
 #app {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   .navbar {
