@@ -13,9 +13,9 @@ module.exports = {
     },
   },
   chainWebpack: (config) => {
-    config.plugin("VuetifyLoaderPlugin").tap((args) => [
+    config.plugin("VuetifyLoaderPlugin").tap(() => [
       {
-        match(originalTag, { kebabTag, camelTag, path, component }) {
+        match(originalTag, { kebabTag, camelTag }) {
           if (kebabTag.startsWith("core-")) {
             return [
               camelTag,
