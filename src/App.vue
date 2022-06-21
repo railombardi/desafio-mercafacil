@@ -2,7 +2,7 @@
   <div data-app id="app">
     <nav class="navbar">
       <div class="navbar__container">
-        <NavbarIcon />
+        <NavbarIcon @click.native="goToHome" />
         <mq-layout mq="lg">
           <div class="navigators">
             <router-link class="navigators__link" to="/"
@@ -66,6 +66,9 @@ export default {
     },
     closeOverlay() {
       this.overlayVisible = false;
+    },
+    goToHome() {
+      this.$router.push({ path: "/" });
     },
   },
 };
