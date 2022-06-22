@@ -1,11 +1,14 @@
 <template>
   <div class="layout">
     <div class="container">
+      <!-- @slot default to label prop -->
       <slot />
       <div class="filters">
+        <!-- @slot filters intended for page filters and inputs-->
         <slot name="filters" />
       </div>
       <div class="list">
+        <!-- @slot list intended for the cards and blocks of the page list -->
         <slot name="list" />
       </div>
     </div>

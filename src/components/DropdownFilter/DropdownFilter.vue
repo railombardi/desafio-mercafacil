@@ -27,14 +27,23 @@
 <script>
 export default {
   props: {
+    /**
+     * Array of options to pass to dropdown
+     */
     options: {
       type: Array,
       default: () => [],
     },
+    /**
+     * Dropdown's placeholder
+     */
     placeholder: {
       type: String,
       default: "Filter",
     },
+    /**
+     * Default value when dropdown is instantiated, normally used by the v-model directive
+     */
     value: {
       type: String,
       default: "",
@@ -48,8 +57,16 @@ export default {
   watch: {
     visible(newValue) {
       if (newValue) {
+        /**
+         * Called when dropdown opens
+         * @type {Event}
+         */
         this.$emit("dropdown-open");
       } else {
+        /**
+         * Called when dropdown close
+         * @type {Event}
+         */
         this.$emit("dropdown-close");
       }
     },
@@ -73,7 +90,10 @@ export default {
       }
     },
     emitChange(value) {
-      this.$emit("change", value);
+      /**
+       * Called when an option is selected
+       */
+      this.$emit("onChange", value);
       this.close();
     },
   },

@@ -1,6 +1,18 @@
 import Vue from "vue";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
+import vuetify from "./vuetify_storybook";
+
+export const decorators = [
+  (Story) => ({
+    vuetify,
+    template: `
+    <div data-app style="font-family: 'Raleway, sans-serif' !important;">
+      <story/>
+    </div data-app>
+    `,
+  }),
+];
 
 const requireComponent = require.context(
   "../src/components/icons",

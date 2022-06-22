@@ -1,12 +1,21 @@
 <template>
-  <v-overlay :value="true">
-    <img class="loader" :src="require('../assets/images/loading.png')" />
+  <v-overlay :absolute="absolute" :value="true">
+    <img class="loader" :src="require('../../assets/images/loading.png')" />
   </v-overlay>
 </template>
 
 <script>
 export default {
   name: "PageLoader",
+  props: {
+    /**
+     * Defines whether or not the component will have absolute position
+     */
+    absolute: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 

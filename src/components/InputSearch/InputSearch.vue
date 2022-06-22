@@ -13,10 +13,16 @@
 export default {
   name: "InputSearch",
   props: {
+    /**
+     * Input's placeholder
+     */
     placeholder: {
       type: String,
       default: "",
     },
+    /**
+     * Default value when inputSearch is instantiated, normally used by the v-model directive
+     */
     value: {
       type: String,
       default: "",
@@ -34,6 +40,10 @@ export default {
   },
   methods: {
     emitInput(value) {
+      /**
+       * Called when something is typed in the input
+       * @type {Event}
+       */
       this.$emit("input", value);
     },
   },

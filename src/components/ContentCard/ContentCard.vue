@@ -9,14 +9,23 @@
 <script>
 export default {
   props: {
+    /**
+     * Card title
+     */
     title: {
       type: String,
       default: "",
     },
+    /**
+     * Card subtitle
+     */
     subtitle: {
       type: String,
       default: "",
     },
+    /**
+     * Card field for additional information
+     */
     extra: {
       type: String,
       default: "",
@@ -30,15 +39,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background: #fafafa;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
     0px 2px 4px rgba(0, 0, 0, 0.14);
   border-radius: 4px;
   width: 312px;
   height: 128px;
-  padding: 25px 16px;
+  padding: 2px 16px;
   transition: all 0.3s ease;
   cursor: pointer;
+  text-align: center;
   @include tablet() {
     width: 240px;
     &:hover {
@@ -63,6 +74,28 @@ export default {
     font-size: 14px;
     line-height: 21px;
     color: $text-placeholder;
+  }
+  &__title,
+  &__subtitle,
+  &__extra {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+  &__title,
+  &__subtitle {
+    @supports (-webkit-line-clamp: 2) {
+      max-width: 100%;
+      max-height: 60px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: initial;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      word-wrap: break-word;
+    }
   }
 }
 </style>

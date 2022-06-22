@@ -1,7 +1,7 @@
 <template>
   <label class="wrapper">
     <component class="icon" v-if="icon" :is="iconComponent" />
-    <button class="button">
+    <button @click="emitClick" class="button">
       {{ label }}
     </button>
   </label>
@@ -11,10 +11,16 @@
 export default {
   name: "ActionButton",
   props: {
+    /**
+     * button label
+     */
     label: {
       type: String,
       default: "label",
     },
+    /**
+     * intended if you want to use any icon from the icon components
+     */
     icon: {
       type: String,
       default: "",
@@ -23,6 +29,15 @@ export default {
   computed: {
     iconComponent() {
       return `${this.icon}-icon`;
+    },
+  },
+  methods: {
+    emitClick(e) {
+      /**
+       * Passthrough click event
+       * @type {Event}
+       */
+      this.$emit("click", e);
     },
   },
 };
@@ -49,6 +64,7 @@ export default {
     font-size: 14px;
     line-height: 16px;
     border: none;
+    cursor: pointer;
   }
 }
 </style>

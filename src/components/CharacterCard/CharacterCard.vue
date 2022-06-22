@@ -11,17 +11,26 @@
 <script>
 export default {
   props: {
+    /**
+     * Character's Name
+     */
     name: {
       type: String,
-      default: "",
+      required: true,
     },
+    /**
+     * Characters's image link
+     */
     image: {
       type: String,
-      default: "",
+      required: true,
     },
+    /**
+     * Character's species, ex: human, alien, robot...
+     */
     species: {
       type: String,
-      default: "",
+      required: true,
     },
   },
 };
