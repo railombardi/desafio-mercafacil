@@ -1,29 +1,28 @@
+
+![Rick e Morty logo](/src/assets/images/Characters.png "Rick e Morty logo")
 # desafio-mercafacil
+Desafio técnico de front-end proposto pela empresa Mercafacil, onde foi desenvolvido um projeto utilizando a API Rick and Morty (https://rickandmortyapi.com/). 
+## Instalação
+Primeiramente você deve rodar o comando:
+```bash
+    npm install
+```
+Instalando e atualizando todas dependencias o projeto estará apto para ser utilizado.
+São alguns comandos: 
 
-## Project setup
+Para compilar e rodar em modo desenvolvimento com hot-reload:
+```bash
+ npm run serve
 ```
-npm install
+Para compilar e minificar em modo produção
+```bash
+ npm run build
 ```
-
-### Compiles and hot-reloads for development
+Rodar testes unitários:
+```bash
+ npm run test:unit
 ```
-npm run serve
+Rodar o lint e corrigir arquivos:
+```bash
+ npm run lint
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
