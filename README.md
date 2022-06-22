@@ -2,6 +2,10 @@
 ![Rick e Morty logo](/src/assets/images/Characters.png "Rick e Morty logo")
 # desafio-mercafacil
 Desafio técnico de front-end proposto pela empresa Mercafacil, onde foi desenvolvido um projeto utilizando a API Rick and Morty (https://rickandmortyapi.com/). 
+
+## Link do Projeto hospedado
+https://mercafacil-railombardi.netlify.app/
+
 ## Instalação
 Primeiramente você deve rodar o comando:
 ```bash
